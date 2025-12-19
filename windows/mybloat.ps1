@@ -12,7 +12,7 @@ winget install -e --id Git.Git --scope machine --accept-package-agreements --acc
 
 # Everything Search Engine
 winget install -e --id voidtools.Everything.Alpha --scope machine --accept-package-agreements --accept-source-agreements --silent
-& "C:\Program Files\Everything 1.5a\Everything64.exe" -install-service -install-startup
+& "C:\Program Files\Everything 1.5a\Everything.exe" -install-service -install-startup
 
 # VLC Media Player
 winget install -e --id VideoLAN.VLC --scope machine --accept-package-agreements --accept-source-agreements --silent
