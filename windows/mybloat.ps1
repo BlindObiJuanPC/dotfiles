@@ -34,24 +34,6 @@ winget install -e --id Microsoft.VisualStudioCode --scope machine --accept-packa
 winget install -e --id Anaconda.Miniconda3 --scope user --accept-package-agreements --accept-source-agreements --silent
 
 
-# --- INITIALIZE CONDA ---
-
-# 1. Initialize Conda for PowerShell and CMD
-Write-Host "Initializing Conda for PowerShell and CMD..." -ForegroundColor Cyan
-$condaPath = "$env:USERPROFILE\Miniconda3\Scripts\conda.exe"
-
-if (Test-Path $condaPath) {
-    & $condaPath init powershell --user
-    & $condaPath init cmd.exe --user
-} else {
-    Write-Host "Miniconda path not found. Check install location." -ForegroundColor Red
-}
-
-# 2. Set PowerShell Execution Policy (Required for Conda to run in PS)
-# Without this, PowerShell will block the Conda initialization script.
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
-
-
 # --- CLEANUP DESKTOP ICONS---
 
 Write-Host "Removing unwanted desktop shortcuts..." -ForegroundColor Cyan
@@ -79,3 +61,21 @@ foreach ($folder in @($desktop, $publicDesktop)) {
         }
     }
 }
+
+
+# --- INITIALIZE CONDA ---
+
+# 1. Initialize Conda for PowerShell and CMD
+Write-Host "Initializing Conda for PowerShell and CMD..." -ForegroundColor Cyan
+$condaPath = "$env:USERPROFILE\Miniconda3\Scripts\conda.exe"
+
+if (Test-Path $condaPath) {
+    & $condaPath init powershell --user
+    & $condaPath init cmd.exe --user
+} else {
+    Write-Host "Miniconda path not found. Check install location." -ForegroundColor Red
+}
+
+# 2. Set PowerShell Execution Policy (Required for Conda to run in PS)
+# Without this, PowerShell will block the Conda initialization script.
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
