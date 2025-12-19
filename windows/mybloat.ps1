@@ -12,7 +12,7 @@ winget install -e --id Git.Git --scope machine --accept-package-agreements --acc
 
 # Everything Search Engine
 winget install -e --id voidtools.Everything.Alpha --scope machine --accept-package-agreements --accept-source-agreements --silent
-& "C:\Program Files\Everything 1.5a\Everything.exe" -install-service -install-startup
+& "C:\Program Files\Everything 1.5a\Everything.exe" -install-client-service -install-run-on-system-startup -install-folder-context-menu -uninstall-desktop-shortcut
 
 # VLC Media Player
 winget install -e --id VideoLAN.VLC --scope machine --accept-package-agreements --accept-source-agreements --silent
@@ -49,7 +49,6 @@ $toRemove = @(
     "Greenshot", 
     "ScreenToGif",
     "Visual Studio Code"
-    "Everything 1.5a"
 )
 
 foreach ($folder in @($desktop, $publicDesktop)) {
